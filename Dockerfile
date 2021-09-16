@@ -1,6 +1,9 @@
-FROM adoptopenjdk/openjdk11:alpine-jre
-WORKDIR /opt/app
-ARG JAR_FILE=target/exmaple.jar
-COPY ${JAR_FILE} app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/exmaple.jar"]
+FROM java:8-jdk-alpine
+
+COPY ./target/exmaple-0.0.1-SNAPSHOT.jar /usr/app/
+
+WORKDIR /usr/app
+
+RUN sh -c 'touch exmaple-0.0.1-SNAPSHOT.jar'
+
+ENTRYPOINT ["java","-jar","exmaple-0.0.1-SNAPSHOT.jar"]
