@@ -1,9 +1,4 @@
 FROM java:8-jdk-alpine
-
-COPY ./target/exmaple-0.0.1-SNAPSHOT.jar /usr/app/
-
-WORKDIR /usr/app
-
-RUN sh -c 'touch exmaple-0.0.1-SNAPSHOT.jar'
-
-ENTRYPOINT ["java","-jar","exmaple-0.0.1-SNAPSHOT.jar"]
+EXPOSE 8080
+ADD target/exmaple.jar exmaple.jar
+ENTRYPOINT ["java","-jar","/exmaple.jar"]
